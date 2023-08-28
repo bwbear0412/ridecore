@@ -2,19 +2,19 @@
 `include "constants.vh"
 
 module top (
-    //   input 	    CLK_P,
-    //   input 	    CLK_N,
-    //   input 	    RST_X_IN,
-    //   output 	    TXD,
-    //   input 	    RXD,
-    //   output reg [7:0] LED
+    // input            CLK_P,
+    // input            CLK_N,
+    // input            RST_X_IN,
+    // output           TXD,
+    // input            RXD,
+    // output reg [7:0] LED,
     input clk,
     input reset_x
 );
 
   //Active Low SW
-  //   wire 	    clk;
-  //   wire 	    reset_x;
+  // wire                   clk;
+  // wire                   reset_x;
 
 
   wire [  `ADDR_LEN-1:0] pc;
@@ -38,19 +38,19 @@ module top (
   wire [  `ADDR_LEN-1:0] prog_loadaddr = 0;
   wire                   prog_dmem_we = 0;
   wire                   prog_imem_we = 0;
-  /*   
-   assign utx_we = (dmem_we_core && (dmem_addr_core == 32'h0)) ? 1'b1 : 1'b0;
-   assign finish_we = (dmem_we_core && (dmem_addr_core == 32'h8)) ? 1'b1 : 1'b0;
-   
-   always @ (posedge clk) begin
-      if (!reset_x) begin
-	 LED <= 0;
-      end else if (utx_we) begin
-	 LED <= {LED[7], dmem_wdata[6:0]};
-      end else if (finish_we) begin
-	 LED <= {1'b1, LED[6:0]};
-      end
-   end
+  /*
+  assign utx_we = (dmem_we_core && (dmem_addr_core == 32'h0)) ? 1'b1 : 1'b0;
+  assign finish_we = (dmem_we_core && (dmem_addr_core == 32'h8)) ? 1'b1 : 1'b0;
+
+  always @(posedge clk) begin
+    if (!reset_x) begin
+      LED <= 0;
+    end else if (utx_we) begin
+      LED <= {LED[7], dmem_wdata[6:0]};
+    end else if (finish_we) begin
+      LED <= {1'b1, LED[6:0]};
+    end
+  end
 */
   always @(posedge clk) begin
     if (!reset_x) begin
@@ -99,19 +99,17 @@ module top (
       .wdata(prog_loaddata),
       .we(prog_imem_we)
   );
-  /*   
-   SingleUartTx sutx
-     (
-      .CLK(clk),
+  /*
+  SingleUartTx sutx (
+      .CLK  (clk),
       .RST_X(reset_x),
-      .TXD(TXD),
-      .ERR(),
-      .DT01(dmem_wdata[7:0]),
-      .WE01(utx_we)
-      );
+      .TXD  (TXD),
+      .ERR  (),
+      .DT01 (dmem_wdata[7:0]),
+      .WE01 (utx_we)
+  );
 
-   PLOADER loader
-     (
+  PLOADER loader (
       .CLK(clk),
       .RST_X(reset_x),
       .RXD(RXD),
@@ -120,7 +118,7 @@ module top (
       .WE_32(prog_dmem_we),
       .WE_128(prog_imem_we),
       .DONE(loaded)
-      );
+  );
 */
 endmodule  // top
 

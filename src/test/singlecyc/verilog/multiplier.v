@@ -35,7 +35,7 @@ module multiplier (
     input                         sel_lohi,
     output wire   [`DATA_LEN-1:0] result
 );
-/*
+  /*
   wire                          src1_neg = src1[`DATA_LEN-1] & src1_signed;
   wire                          src2_neg = src2[`DATA_LEN-1] & src2_signed;
   wire        [  `DATA_LEN-1:0] a = src1_neg ? -src1 : src1;

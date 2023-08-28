@@ -785,6 +785,5 @@ module rs_alu (
 
   assign spectag = (issueaddr == 0) ? spectag_0 : (issueaddr == 1) ? spectag_1 : (issueaddr == 2) ? spectag_2 : (issueaddr == 3) ? spectag_3 : (issueaddr == 4) ? spectag_4 : (issueaddr == 5) ? spectag_5 : (issueaddr == 6) ? spectag_6 : spectag_7;
 
-
 endmodule  // rs_alu
 `default_nettype wire

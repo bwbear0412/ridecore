@@ -239,10 +239,7 @@ module rs_mul (
   wire [`MUL_ENT_NUM-1:0] inv_vector_spec = {(spectag_1 == prtag) ? 1'b0 : 1'b1, (spectag_0 == prtag) ? 1'b0 : 1'b1};
 
   wire [`MUL_ENT_NUM-1:0] specbitvec_next = (inv_vector_spec & specbitvec);
-  /* |
-				  (we1 & wspecbit_1 ? (`MUL_ENT_SEL'b1 << waddr1) : 0) |
-				  (we2 & wspecbit_2 ? (`MUL_ENT_SEL'b1 << waddr2) : 0);
-    */
+
   assign specbit = prsuccess ? specbitvec_next[issueaddr] : specbitvec[issueaddr];
 
   assign ready   = {ready_1, ready_0};

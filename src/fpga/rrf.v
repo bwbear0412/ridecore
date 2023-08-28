@@ -60,23 +60,9 @@ module rrf (
   assign rs1_2valid = valid[rs1_2tag];
   assign rs2_2valid = valid[rs2_2tag];
 
-  wire [`RRF_NUM-1:0] 		       or_valid = 
-				       (~wrrfen1 ? `RRF_NUM'b0 : 
-					(`RRF_NUM'b1 << wrrfaddr1)) |
-				       (~wrrfen2 ? `RRF_NUM'b0 : 
-					(`RRF_NUM'b1 << wrrfaddr2)) |
- 				       (~wrrfen3 ? `RRF_NUM'b0 : 
-					(`RRF_NUM'b1 << wrrfaddr3)) |
-				       (~wrrfen4 ? `RRF_NUM'b0 : 
-					(`RRF_NUM'b1 << wrrfaddr4)) |
-				       (~wrrfen5 ? `RRF_NUM'b0 : 
-					(`RRF_NUM'b1 << wrrfaddr5));
+  wire [`RRF_NUM-1:0] or_valid = (~wrrfen1 ? `RRF_NUM'b0 : (`RRF_NUM'b1 << wrrfaddr1)) | (~wrrfen2 ? `RRF_NUM'b0 : (`RRF_NUM'b1 << wrrfaddr2)) | (~wrrfen3 ? `RRF_NUM'b0 : (`RRF_NUM'b1 << wrrfaddr3)) | (~wrrfen4 ? `RRF_NUM'b0 : (`RRF_NUM'b1 << wrrfaddr4)) | (~wrrfen5 ? `RRF_NUM'b0 : (`RRF_NUM'b1 << wrrfaddr5));
 
-  wire [`RRF_NUM-1:0] 		       and_valid = 
-				       (~dpen1 ? ~(`RRF_NUM'b0) : 
-					~(`RRF_NUM'b1 << dpaddr1)) & 
-				       (~dpen2 ? ~(`RRF_NUM'b0) : 
-					~(`RRF_NUM'b1 << dpaddr2));
+  wire [`RRF_NUM-1:0] and_valid = (~dpen1 ? ~(`RRF_NUM'b0) : ~(`RRF_NUM'b1 << dpaddr1)) & (~dpen2 ? ~(`RRF_NUM'b0) : ~(`RRF_NUM'b1 << dpaddr2));
 
   always @(posedge clk) begin
     if (reset) begin
