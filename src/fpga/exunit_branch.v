@@ -30,7 +30,8 @@ module exunit_branch (
   reg                  busy;
 
   wire [`DATA_LEN-1:0] comprslt;
-  wire                 addrmatch = (jmpaddr == praddr) ? 1'b1 : 1'b0;
+  wire                 addrmatch;
+  assign addrmatch = (jmpaddr == praddr) ? 1'b1 : 1'b0;
 
 
   assign rob_we = busy;

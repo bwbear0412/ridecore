@@ -1,6 +1,7 @@
 `include "constants.vh"
 `default_nettype none
 // 8KB Single PORT synchronous BRAM
+// Block RAM
 module dmem (
     input  wire                 clk,
     input  wire [`ADDR_LEN-1:0] addr,

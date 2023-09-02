@@ -23,6 +23,7 @@ iverilog is an open-source verilog simulator. To install iverilog in Ubuntu, run
 memgen is an application generating binary code for RIDECORE from ELF files. The source code of memgen can be found in toolchain/memgen-v0.9. Run the make command to compile it.
 
 ## Structure of this repository  
+
 The structure of this repository is described in doc/struct_repository.pdf.
 
 ## How to use  
